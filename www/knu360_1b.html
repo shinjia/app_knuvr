@@ -22,7 +22,7 @@
 
 	  <a-text value="開南大學 " width="6" position="1.5 0.5 -1.5"
               rotation="0 -15 0"></a-text>
-
+	
 	  <a-text id="jsondata" value="123456 " width="6" position="0 1.5 -1.5"
               rotation="0 0 0"></a-text>
 
@@ -63,8 +63,9 @@ var url = 'http://g9app.com/test/json/test2.php';  //紫外線指數
     url: url,
     success: function(data){
       $('#jsondata').html('read ok');
-      $('#jsondata').html(JSON.stringify(data.result.records[0]));
+      // $('#jsondata').html(JSON.stringify(data.result.records[0]));
       //func_show(data);
+      document.getElementById('jsondata').value=JSON.stringify(data.result.records[0]);
     },
     error: function (xhr, ajaxOptions, thrownError) {
         $('#jsondata').html('error: ' + xhr.status +link);
