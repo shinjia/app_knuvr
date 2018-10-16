@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<title>Kolor | HTML, CSS & JS Mobile Template | Epsilon X </title>
+<link rel="stylesheet" type="text/css" href="styles/style.css">
+<link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+<link rel="stylesheet" type="text/css" href="styles/framework.css">
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+
+</head>
+
+<body class="bg-white">
+    
+    <a-scene>
+      <a-sky src="images_360/field2.jpg" rotation="0 -130 0"></a-sky>
+
+      <a-text font="kelsonsans" value="Welcome " width="6" position="-2.5 0.25 -1.5"
+              rotation="0 15 0"></a-text>
+
+	  <a-text value="開南大學 " width="6" position="1.5 0.5 -1.5"
+              rotation="0 -15 0"></a-text>
+
+	  <a-text id="jsondata" value="123456 " width="6" position="0 1.5 -1.5"
+              rotation="0 0 0"></a-text>
+
+
+      <a-entity position="-3 1 -6" rotation="5 0 0">
+        <a-entity
+          rotation="0 0 5"
+          position="0 2 0.2"
+          text-geometry="value: VR Campus; font: #dawningFont; bevelEnabled: true; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12; size: 1; height: 0;"
+          material="color:lavenderblush; metalness:1; roughness: 0; sphericalEnvMap: #pink;"
+        ></a-entity>
+
+    </a-scene>
+    
+
+<div id="preloader" class="preloader-light">
+	<h1 class="center-text color-black ultrabold uppercase bottom-0 fa-2x">Kolor</h1>
+	<div id="preload-spinner"></div>
+	<p>Beautifully Crafted UI & UX.</p>
+	<em>This will only take a second. It's totally worth it!</em>
+</div>
+
+
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="scripts/plugins.js"></script>
+<script type="text/javascript" src="scripts/custom.js"></script>
+
+<script src="js/aframe.min.js"></script>
+
+<script>
+	/* jquery.js */
+var ext = '&callback=?';
+var url = 'http://g9app.com/test/json/test2.php';  //紫外線指數
+// url = url + ext;
+
+  $.ajax({
+    dataType: "json",
+    url: url,
+    success: function(data){
+      $('#jsondata').html('read ok');
+      $('#jsondata').html(JSON.stringify(data.result.records[0]));
+      //func_show(data);
+    },
+    error: function (xhr, ajaxOptions, thrownError) {
+        $('#jsondata').html('error: ' + xhr.status +link);
+    },
+  }); // end of ajax()
+
+/*
+var func_show = function(data){
+  var items = [];
+  var datalist = data.result.records;
+  $.each(datalist, function(i, item) {
+    
+    var SiteName = item.SiteName;
+    var County = item.County;
+    var PublishTime = item.PublishTime;
+    var UVI = item['UVI'];
+ 
+    var str = SiteName + ', ' + County + ', ' + ', ' + UVI + ', ' + PublishTime;
+     
+    items.push('<li>' + str + '</li>');
+  }); // end of each()
+  
+  $('#itemlist li').remove();
+  $('#itemlist').append( items.join('') );
+};
+*/
+</script>
+
+
+</body>
